@@ -19,6 +19,12 @@
 		97476DFB2B95518000A645F5 /* Analyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97476DFA2B95518000A645F5 /* Analyzer.swift */; };
 		97476DFF2B955E1300A645F5 /* OutputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97476DFE2B955E1300A645F5 /* OutputView.swift */; };
 		97476E012B955E9E00A645F5 /* OutputRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97476E002B955E9E00A645F5 /* OutputRowView.swift */; };
+		97476E032B9569E100A645F5 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97476E022B9569E100A645F5 /* InputView.swift */; };
+		97476E072B9569FA00A645F5 /* LettersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97476E062B9569FA00A645F5 /* LettersView.swift */; };
+		97476E0B2B956A6500A645F5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97476E0A2B956A6500A645F5 /* Constants.swift */; };
+		97476E0D2B956B0000A645F5 /* LetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97476E0C2B956B0000A645F5 /* LetterView.swift */; };
+		97476E0F2B956EFE00A645F5 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97476E0E2B956EFE00A645F5 /* Status.swift */; };
+		975A2D512B95845E00DF6D03 /* InputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 975A2D502B95845E00DF6D03 /* InputViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +60,12 @@
 		97476DFA2B95518000A645F5 /* Analyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analyzer.swift; sourceTree = "<group>"; };
 		97476DFE2B955E1300A645F5 /* OutputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputView.swift; sourceTree = "<group>"; };
 		97476E002B955E9E00A645F5 /* OutputRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputRowView.swift; sourceTree = "<group>"; };
+		97476E022B9569E100A645F5 /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
+		97476E062B9569FA00A645F5 /* LettersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LettersView.swift; sourceTree = "<group>"; };
+		97476E0A2B956A6500A645F5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		97476E0C2B956B0000A645F5 /* LetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterView.swift; sourceTree = "<group>"; };
+		97476E0E2B956EFE00A645F5 /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
+		975A2D502B95845E00DF6D03 /* InputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +118,7 @@
 			children = (
 				97476DFC2B955DE400A645F5 /* Models */,
 				97476DFD2B955DFE00A645F5 /* Views */,
+				975A2D4E2B95843900DF6D03 /* ViewModels */,
 				97476DD02B95411100A645F5 /* Assets.xcassets */,
 				97476DD22B95411100A645F5 /* Preview Content */,
 			);
@@ -140,6 +153,8 @@
 		97476DFC2B955DE400A645F5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				97476E0A2B956A6500A645F5 /* Constants.swift */,
+				97476E0E2B956EFE00A645F5 /* Status.swift */,
 				97476DFA2B95518000A645F5 /* Analyzer.swift */,
 				97476DF62B9541A400A645F5 /* Parser.swift */,
 				97476DF82B954D3000A645F5 /* ValidWordleWords.swift */,
@@ -152,10 +167,21 @@
 			children = (
 				97476DCC2B95410F00A645F5 /* WordleSolverApp.swift */,
 				97476DCE2B95410F00A645F5 /* ContentView.swift */,
+				97476E022B9569E100A645F5 /* InputView.swift */,
+				97476E062B9569FA00A645F5 /* LettersView.swift */,
+				97476E0C2B956B0000A645F5 /* LetterView.swift */,
 				97476DFE2B955E1300A645F5 /* OutputView.swift */,
 				97476E002B955E9E00A645F5 /* OutputRowView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		975A2D4E2B95843900DF6D03 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				975A2D502B95845E00DF6D03 /* InputViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,12 +315,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				97476DCF2B95410F00A645F5 /* ContentView.swift in Sources */,
+				975A2D512B95845E00DF6D03 /* InputViewModel.swift in Sources */,
 				97476DF92B954D3000A645F5 /* ValidWordleWords.swift in Sources */,
+				97476E0D2B956B0000A645F5 /* LetterView.swift in Sources */,
 				97476DFB2B95518000A645F5 /* Analyzer.swift in Sources */,
+				97476E072B9569FA00A645F5 /* LettersView.swift in Sources */,
 				97476E012B955E9E00A645F5 /* OutputRowView.swift in Sources */,
 				97476DCD2B95410F00A645F5 /* WordleSolverApp.swift in Sources */,
+				97476E0F2B956EFE00A645F5 /* Status.swift in Sources */,
+				97476E032B9569E100A645F5 /* InputView.swift in Sources */,
 				97476DF72B9541A500A645F5 /* Parser.swift in Sources */,
 				97476DFF2B955E1300A645F5 /* OutputView.swift in Sources */,
+				97476E0B2B956A6500A645F5 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

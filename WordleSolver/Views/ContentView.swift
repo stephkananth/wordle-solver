@@ -8,19 +8,21 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var analyzer: Analyzer? = nil
-    @State var wordsSortedByScore: [(String, Int)]? = nil
+    @State var allWords: [(String, Int)]? = nil
 
     var body: some View {
         TabView {
-            Text("Input")
+            NavigationStack {
+                InputView()
+                    .navigationTitle("Wordle Solver")
+            }
                 .tabItem {
                     Label("Input", systemImage: "pencil")
                 }
             NavigationStack {
                 Group {
-                    if let wordsSortedByScore {
-                        OutputView(words: wordsSortedByScore)
+                    if let allWords {
+                        OutputView(words: allWords)
                     } else {
                         ProgressView()
                     }
@@ -33,13 +35,9 @@ struct ContentView: View {
 
         }
         .task {
-            let analyzer = await Analyzer(words: Parser().words)
-            self.analyzer = analyzer
-            self.wordsSortedByScore = await analyzer.wordsSortedByScore
+            let words = await Parser().words
+            let analyzer = Analyzer(words: words)
+            self.allWords = await analyzer.wordsSortedByScore
         }
     }
-}
-
-#Preview {
-    ContentView(analyzer: Analyzer(words: ["jamie", "julia", "shana", "steph"]))
 }

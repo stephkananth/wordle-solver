@@ -20,7 +20,7 @@ actor Analyzer: Sendable {
         }
 
         var letterFrequencies: [Character: Int] = [:]
-        for letter in "abcdefghijklmnopqrstuvwxyz" {
+        for letter in Constants.ALPHABET {
             letterFrequencies[letter] = words.filter { $0.contains(letter) }.count
         }
         letterFrequenciesCache = letterFrequencies
