@@ -16,7 +16,7 @@ struct OutputView: View {
         if searchText.isEmpty {
             return words
         }
-        return words.filter { $0.0.contains(searchText) }
+        return words.filter { $0.0.contains(searchText.lowercased()) }
     }
 
     var body: some View {

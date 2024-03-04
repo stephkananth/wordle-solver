@@ -14,17 +14,17 @@ struct LettersView: View {
         VStack {
             HStack {
                 ForEach(Array(Constants.TOP_ROW), id: \.self) {
-                    LetterView(letter: $0, status: viewModel.getStatus(for: $0))
+                    LetterView(letter: $0, status: viewModel.getStatus(for: Character($0.lowercased())))
                 }
             }
             HStack {
                 ForEach(Array(Constants.MIDDLE_ROW), id: \.self) {
-                    LetterView(letter: $0, status: viewModel.getStatus(for: $0))
+                    LetterView(letter: $0, status: viewModel.getStatus(for: Character($0.lowercased())))
                 }
             }
             HStack {
                 ForEach(Array(Constants.BOTTOM_ROW), id: \.self) {
-                    LetterView(letter: $0, status: viewModel.getStatus(for: $0))
+                    LetterView(letter: $0, status: viewModel.getStatus(for: Character($0.lowercased())))
                 }
             }
         }

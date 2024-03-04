@@ -28,9 +28,9 @@ final class InputViewModel: ObservableObject {
 
     var displayedWords: [(String, Int)] {
         if searchText.isEmpty {
-            return validWords.top(5)
+            return validWords.top(10)
         }
-        return validWords.filter { $0.0.contains(searchText) }.top(5)
+        return validWords.filter { $0.0.contains(searchText.lowercased()) }.top(10)
     }
 
     private var validWords: [(String, Int)] {
@@ -38,18 +38,18 @@ final class InputViewModel: ObservableObject {
         words.forEach {
             if !$0.0.containsLettersFrom(grayLetters) &&
                 $0.0.matchesGreen([
-                    greenLetter1,
-                    greenLetter2,
-                    greenLetter3,
-                    greenLetter4,
-                    greenLetter5
+                    greenLetter1.lowercased(),
+                    greenLetter2.lowercased(),
+                    greenLetter3.lowercased(),
+                    greenLetter4.lowercased(),
+                    greenLetter5.lowercased()
                 ]) &&
                 $0.0.matchesYellow([
-                    yellowLetters1,
-                    yellowLetters2,
-                    yellowLetters3,
-                    yellowLetters4,
-                    yellowLetters5
+                    yellowLetters1.lowercased(),
+                    yellowLetters2.lowercased(),
+                    yellowLetters3.lowercased(),
+                    yellowLetters4.lowercased(),
+                    yellowLetters5.lowercased()
                 ]) {
                 validWords.append($0)
             }
@@ -62,43 +62,27 @@ final class InputViewModel: ObservableObject {
     }
 
     func getStatus(for letter: Character) -> Status {
-        if grayLetters.contains(letter) {
+        if grayLetters.lowercased().contains(letter) {
             return .gray
         }
 
-        print("\ngreen:")
-        print([
-            greenLetter1,
-            greenLetter2,
-            greenLetter3,
-            greenLetter4,
-            greenLetter5
-        ].joined())
         if [
-            greenLetter1,
-            greenLetter2,
-            greenLetter3,
-            greenLetter4,
-            greenLetter5
-        ].joined().contains(letter) {
+            greenLetter1.lowercased(),
+            greenLetter2.lowercased(),
+            greenLetter3.lowercased(),
+            greenLetter4.lowercased(),
+            greenLetter5.lowercased()
+        ].joined().lowercased().contains(letter) {
             return .green
         }
 
-        print("\nyellow:")
-        print([
-            yellowLetters1,
-            yellowLetters2,
-            yellowLetters3,
-            yellowLetters4,
-            yellowLetters5
-        ].joined())
         if [
-            yellowLetters1,
-            yellowLetters2,
-            yellowLetters3,
-            yellowLetters4,
-            yellowLetters5
-        ].joined().contains(letter) {
+            yellowLetters1.lowercased(),
+            yellowLetters2.lowercased(),
+            yellowLetters3.lowercased(),
+            yellowLetters4.lowercased(),
+            yellowLetters5.lowercased()
+        ].joined().lowercased().contains(letter) {
             return .yellow
         }
 

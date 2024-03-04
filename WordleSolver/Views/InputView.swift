@@ -13,7 +13,7 @@ struct InputView: View {
     var allWords: [(String, Int)]
 
     var body: some View {
-        Group {
+        VStack {
             Form {
                 Section("Top Options") {
                     List(viewModel.displayedWords, id: \.0) { (word, score) in
