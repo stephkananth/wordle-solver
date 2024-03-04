@@ -2,7 +2,7 @@
 //  WordleSolverTests.swift
 //  WordleSolverTests
 //
-//  Created by Steph on 3/3/24.
+//  Created by Stephanie Ananth on 3/3/24.
 //
 
 import XCTest
