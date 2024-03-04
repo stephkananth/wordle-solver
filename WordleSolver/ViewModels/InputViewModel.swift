@@ -28,9 +28,9 @@ final class InputViewModel: ObservableObject {
 
     var displayedWords: [(String, Int)] {
         if searchText.isEmpty {
-            return validWords.top(10)
+            return validWords.top(5)
         }
-        return validWords.filter { $0.0.contains(searchText.lowercased()) }.top(10)
+        return validWords.filter { $0.0.contains(searchText.lowercased()) }.top(5)
     }
 
     private var validWords: [(String, Int)] {
@@ -92,8 +92,8 @@ final class InputViewModel: ObservableObject {
 
 fileprivate extension String {
     func containsLettersFrom(_ string: String) -> Bool {
-        let stringSet = Set<Character>(self)
-        let charSet = Set<Character>(string)
+        let stringSet = Set<Character>(self.lowercased())
+        let charSet = Set<Character>(string.lowercased())
         return !stringSet.isDisjoint(with: charSet)
     }
 
