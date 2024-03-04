@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LetterView: View {
     let letter: Character
-    @Binding var status: Status
+    var status: Status
 
     var body: some View {
         Text(String(letter).uppercased())
@@ -24,9 +24,9 @@ struct LetterView: View {
 
 #Preview {
     Group {
-        LetterView(letter: "Q", status: .constant(.neutral))
-        LetterView(letter: "A", status: .constant(.yellow([])))
-        LetterView(letter: "Z", status: .constant(.gray))
-        LetterView(letter: "B", status: .constant(.green([])))
+        LetterView(letter: "Q", status: .neutral)
+        LetterView(letter: "A", status: .yellow)
+        LetterView(letter: "Z", status: .gray)
+        LetterView(letter: "B", status: .green)
     }
 }

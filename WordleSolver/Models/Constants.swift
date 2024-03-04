@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Constants {
+struct Constants: Sendable {
     static let ALPHABET: String = "abcdefghijklmnopqrstuvwxyz"
     static let TOP_ROW: String = "qwertyuiop"
     static let MIDDLE_ROW: String = "asdfghjkl"

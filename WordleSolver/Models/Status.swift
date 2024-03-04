@@ -10,8 +10,8 @@ import SwiftUI
 enum Status: Sendable {
     case neutral
     case gray
-    case green([Int])
-    case yellow([Int])
+    case green
+    case yellow
 
     var color: Color {
         switch self {

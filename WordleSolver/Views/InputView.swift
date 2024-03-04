@@ -8,62 +8,57 @@
 import SwiftUI
 
 struct InputView: View {
-    @State private var grayLetters: String = ""
-    
-    @State private var greenLetter1: String = ""
-    @State private var greenLetter2: String = ""
-    @State private var greenLetter3: String = ""
-    @State private var greenLetter4: String = ""
-    @State private var greenLetter5: String = ""
-    @State private var greenLetter6: String = ""
+    @ObservedObject private var viewModel: InputViewModel
 
-    @State private var yellowLetters1: String = ""
-    @State private var yellowLetters2: String = ""
-    @State private var yellowLetters3: String = ""
-    @State private var yellowLetters4: String = ""
-    @State private var yellowLetters5: String = ""
-    @State private var yellowLetters6: String = ""
+    var allWords: [(String, Int)]
 
     var body: some View {
-        Form {
-            Section("Top Options") {
-                OutputView(words: [
-                    ("crane", 3),
-                    ("arose", 2),
-                    ("audio", 1)
-                ])
+        Group {
+            Form {
+                Section("Top Options") {
+                    List(viewModel.displayedWords, id: \.0) { (word, score) in
+                        OutputRowView(word: word, score: score)
+                    }
+                    .searchable(text: $viewModel.searchText)
+                    .autocorrectionDisabled()
+                }
+
+                Section("Gray Letters") {
+                    TextField("Wrong Letters", text: $viewModel.grayLetters)
+                }
             }
 
-            Section("Gray Letters") {
-                TextField("Wrong Letters", text: $grayLetters)
-            }
+            HStack {
+                Form {
+                    Section("Green Letters") {
+                        TextField("1", text: $viewModel.greenLetter1)
+                        TextField("2", text: $viewModel.greenLetter2)
+                        TextField("3", text: $viewModel.greenLetter3)
+                        TextField("4", text: $viewModel.greenLetter4)
+                        TextField("5", text: $viewModel.greenLetter5)
+                    }
+                }
 
-            Section("Green Letters") {
-                    TextField("1", text: $greenLetter1)
-                    TextField("2", text: $greenLetter2)
-                    TextField("3", text: $greenLetter3)
-                    TextField("4", text: $greenLetter4)
-                    TextField("5", text: $greenLetter5)
-                    TextField("6", text: $greenLetter6)
-            }
-
-            Section("Yellow Letters") {
-                TextField("1", text: $yellowLetters1)
-                TextField("2", text: $yellowLetters2)
-                TextField("3", text: $yellowLetters3)
-                TextField("4", text: $yellowLetters4)
-                TextField("5", text: $yellowLetters5)
-                TextField("6", text: $yellowLetters6)
+                Form {
+                    Section("Yellow Letters") {
+                        TextField("1", text: $viewModel.yellowLetters1)
+                        TextField("2", text: $viewModel.yellowLetters2)
+                        TextField("3", text: $viewModel.yellowLetters3)
+                        TextField("4", text: $viewModel.yellowLetters4)
+                        TextField("5", text: $viewModel.yellowLetters5)
+                    }
+                }
             }
 
             Section {
-                LettersView()
+                LettersView(viewModel: viewModel)
             }
         }
         .autocorrectionDisabled()
     }
-}
 
-#Preview {
-    InputView()
+    internal init(allWords: [(String, Int)]) {
+        self.allWords = allWords
+        self.viewModel = InputViewModel(words: allWords)
+    }
 }

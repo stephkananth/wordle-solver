@@ -13,12 +13,18 @@ struct ContentView: View {
     var body: some View {
         TabView {
             NavigationStack {
-                InputView()
-                    .navigationTitle("Wordle Solver")
-            }
-                .tabItem {
-                    Label("Input", systemImage: "pencil")
+                Group {
+                    if let allWords {
+                        InputView(allWords: allWords)
+                    } else {
+                        ProgressView()
+                    }
                 }
+                .navigationTitle("Wordle Solver")
+            }
+            .tabItem {
+                Label("Input", systemImage: "pencil")
+            }
             NavigationStack {
                 Group {
                     if let allWords {
